@@ -30,3 +30,6 @@ override.tf.json
 
 # Ignore credentials files you do not wish to add to version control
 credentials.auto.tfvars
+
+# Ignore lock file
+*.terraform*
