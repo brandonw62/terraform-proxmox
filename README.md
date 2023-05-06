@@ -1,9 +1,20 @@
 # Terraform-Proxmox
-Automate the provisioning of virtual machines using terraform
 
-This repo uses Terraform Version v1.3.7 and the Telmate Proxmox Provider Version 2.9.11
+## Overview
 
+Automate the provisioning of virtual machines in proxmox using terraform
+
+## Getting Started
+
+- Create a local copy of `credentials.example`:
+
+```bash
+cp credentials.example credentials.auto.tfvars
 ```
+
+- Create an API token in proxmox and populate the necessary values in `credentials.auto.tfvars`
+
+```bash
 # Initialize the provider
 terraform init
 
@@ -12,4 +23,7 @@ terraform plan
 
 # Deploy Resources
 terraform apply -auto-approve
+
+# Destroy Resoureces
+terraform destroy
 ```

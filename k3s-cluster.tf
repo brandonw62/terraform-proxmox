@@ -1,16 +1,16 @@
 resource "proxmox_vm_qemu" "k3s_cluster" {
-  count = 0
-  name = "k3s-00${count.index + 1}"
-  desc = "Ubuntu Server - Running K3s"
-  vmid = "45${count.index + 1}"
+  count       = 5
+  name        = "k3s-0${count.index + 1}"
+  desc        = "Ubuntu Server - Running K3s"
+  vmid        = "86${count.index + 1}"
   target_node = "pve1"
-  agent =  1
+  agent       = 1
 
-  clone = "ubuntu-2204-template"
-  cores = 2
+  clone   = "ubuntu-2204-template"
+  cores   = 2
   sockets = 1
-  cpu = "host"
-  memory = "2048"
+  cpu     = "host"
+  memory  = "2048"
   # boot = "ide2,scsi0,net0,ide0"
 
   vga {
@@ -18,18 +18,18 @@ resource "proxmox_vm_qemu" "k3s_cluster" {
   }
 
   network {
-    model = "virtio"
-    bridge = "vmbr1"
+    model    = "virtio"
+    bridge   = "vmbr1"
     firewall = true
   }
 
   disk {
-    type = "scsi"
+    type    = "scsi"
     storage = "vm_storage"
-    size = "32G"
+    size    = "32G"
   }
 
-  os_type = "cloud-init"
+  os_type   = "cloud-init"
   ipconfig0 = "ip=192.168.1.9${count.index + 1}/24,gw=192.168.1.1"
   # ciuser = "brandon"
   # sshkeys = <<EOF
