@@ -11,6 +11,8 @@ resource "proxmox_vm_qemu" "k3s_cluster" {
   sockets = 1
   cpu     = "host"
   memory  = "2048"
+
+  scsihw      = "virtio-scsi-single"
   # boot = "ide2,scsi0,net0,ide0"
 
   vga {

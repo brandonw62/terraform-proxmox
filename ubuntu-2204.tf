@@ -1,5 +1,5 @@
 resource "proxmox_vm_qemu" "ubuntu-2204" {
-  count       = 0
+  count       = 1
   name        = "ubuntu-2204-0${count.index + 1}"
   desc        = "Ubuntu Server"
   vmid        = "40${count.index + 1}"
@@ -12,6 +12,9 @@ resource "proxmox_vm_qemu" "ubuntu-2204" {
   sockets = 1
   cpu     = "host"
   memory  = "2048"
+
+  scsihw      = "virtio-scsi-single"
+  # boot = "ide2,scsi0,net0,ide0"
 
   vga {
     type = "serial0"
